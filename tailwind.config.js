@@ -1,4 +1,4 @@
-module.exports = {
+const tailwindConfig = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -24,3 +24,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default tailwindConfig;
