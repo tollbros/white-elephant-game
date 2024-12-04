@@ -1,43 +1,113 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# White Elephant Gift Exchange App
 
-## Available Scripts
+## Overview
+The **White Elephant Gift Exchange App** is a dynamic app for early organizing and managing a virtual White Elephant-style gift exchanges. The owner will be resonsible for adding all of the gifts to the game prior to play - whether the owner hand selects gifts or collects a list of gifts from players. Images of gifts, gift names, and player names will be needed to play. 
+
+It follows these classic rules:
+
+1. **Random Player Order:** Players are randomly assigned an order to take their turns.
+2. **Gift Unwrapping:** Players can choose to unwrap a new gift or steal an unwrapped one from another player.
+3. **Gift Stealing Limits:** 
+   - Each gift can only be stolen a maximum of **two times**, after which it is locked.
+   - A player cannot immediately steal back a gift that was just taken from them.
+4. **Final Pick for First Player:** The first player gets a final opportunity to either keep their gift or swap it with another player at the end of the game.
+5. **Game Conclusion:** The game ends when all players have had their turn, and the final pick phase is completed.
+
+This app replicates the fun of a traditional White Elephant game while adding seamless set up and tracking, making it perfect for virtual holiday parties, team-building events, or family gatherings.
+
+---
+
+## Features
+- **Randomized Player Order:** Automatically shuffles players to ensure fairness.
+- **Gift Unwrapping and Stealing:** Allows players to unwrap new gifts or steal unwrapped ones from others.
+- **Gift Locking:** Gifts can only be stolen twice, and locked gifts are clearly indicated.
+- **Final Pick Phase:** Gives the first player a special opportunity to swap or keep their gift at the end of the game.
+- **Responsive UI:** Optimized for various screen sizes, ensuring accessibility on desktop, tablet, or mobile devices.
+- **Summary Screen:** For easy gift tracking and direct links to purchase
+
+---
+
+## Prerequisites
+Before running the app, ensure you have the following installed:
+- **Node.js** (v14 or later)
+- **npm** (Node Package Manager)
+
+---
+
+## Installation
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/tollbros/white-elephant-game.git
+   cd white-elephant-game
+   ```
+
+2. **Install Dependencies:**
+   Run the following command to install the required Node modules:
+   ```bash
+   npm install
+   ```
+
+3. **Start the Development Server:**
+   Launch the app locally:
+   ```bash
+   npm start
+   ```
+
+4. **Open in Browser:**
+   Navigate to `http://localhost:3000` to view the app.
+
+
+
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
+#### `npm start`
+Runs the app in the development mode.  
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.  
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+#### `npm run build`
+Builds the app for production to the `build` folder.  
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.  
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Usage
+### Game Setup
+1. Add players to the `basePlayers` array in `WhiteElephantGame.jsx`.
+2. Customize gift names in the `giftNames` array.
+3. Ensure gift images are added to the `/images` folder with filenames matching the `giftX.jpg` pattern.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Game Play
+1. The first player is randomly selected to start.
+2. Players take turns to either:
+   - Unwrap a new gift.
+   - Steal an unwrapped gift (with a maximum of two steals per gift).
+3. After all players have a gift, the first player has a **final pick** to swap or keep their gift.
+4. The game ends, and a summary of all players and their gifts is displayed.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Customization
+### Adding Players
+- Update the `basePlayers` array in `WhiteElephantGame.jsx` with player names.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Adding Gifts
+1. Update the `giftNames` array with the names of gifts.
+2. Add gift images to the `/images` folder, naming them sequentially (e.g., `gift1.jpg`, `gift2.jpg`, etc.).
+3. Update the `giftLinks` array with the links to all of the gifts. 
+
+### Tailwind Styling
+All styles are powered by **Tailwind CSS**. Modify styles in `src/styles/` or directly in the JSX.
+
+---
 
 ## Learn More
 
@@ -45,26 +115,15 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used
+- **React.js**: For building the user interface.
+- **Tailwind CSS**: For styling and responsive design.
+- **Node.js**: For managing dependencies and running the development server.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgments
+- Icons from **lucide-react**
+- Developed with love for the holiday season 🎁
