@@ -111,7 +111,7 @@ const WhiteElephantGame = () => {
       id: index + 1,
       isUnwrapped: false,
       name: giftNames[index] || `Gift #${index + 1}`,
-      imageUrl: images[imageFileName] || `/api/placeholder/${120}/${120}`,
+      imageUrl: images[imageFileName].default.src || `/api/placeholder/${120}/${120}`,
       link: giftLinks[index] || "#", // Add the link property
       ownedBy: null,
     };
