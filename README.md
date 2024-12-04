@@ -126,4 +126,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Acknowledgments
 - Icons from **lucide-react**
-- Developed with love for the holiday season 🎁
+- Developed for virtual holiday season celebrations 🎁
