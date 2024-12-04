@@ -20,7 +20,7 @@ const WhiteElephantGame = () => {
   ];
 
   const giftNames = [
-    "Essential Oil Diffuser", "Glass Food Containers", "Travel Coffee Tumbler", "Candle Warmer", "Fondue Pot", "Flower Pot", 
+    "Bluetooth Speaker", "Chair Heating Pad", "Essential Oil Diffuser", "Glass Food Containers", "Travel Coffee Tumbler", "Candle Warmer", "Fondue Pot", "Flower Pot", 
     "Welcome Door Sign", "Candle", "Charcuterie Board", "Catch Phrase Game", "Pickleball Set", "Cocktail Shaker Set", "Coffee Java Sok", "Movie Night Popcorn Kit", "Headache Relief Hat", "3-in-1 Can Koozie",
     "Massage Gun", "Dumpster Fire Travel Mug", "Holiday Home Puzzle", "Popcorn Maker", "Coffee Mug", "Code Name Game", "Tapple Game", "Carhartt Hat", "Blanket", "Eagles Desk Pad", "Rechargable Hand Warmers",
     "Himalayan Salt Lamp", "Holiday Waffle Maker", "Snoop Dogg Cook Book", "Mug Warmer", "Veggie Chopper", "Packing Cubes", "Stanley Wine Tumbler", "Charging Phone Stand", "Mini Crock Pot", 
