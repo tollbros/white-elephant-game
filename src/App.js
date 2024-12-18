@@ -1,5 +1,4 @@
-import WhiteElephantGame from '../src/WhiteElephantGame.jsx';
-import '../src/index.css';
+import WhiteElephantGame from './WhiteElephantGame';
 
 function App() {
     return (
