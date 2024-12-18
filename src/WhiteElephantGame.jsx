@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Gift, Snowflake, TreePine, Heart, Sparkles, CandyCane, Star, User, Lock } from 'lucide-react';
 import Card from './components/card';
 import { Alert, AlertDescription } from './components/alert';
-import gift1 from './images/gift1.jpg';
+// import gift1 from './images/gift1.jpg';
 
 const WhiteElephantGame = () => {
   const basePlayers = [
@@ -111,7 +111,7 @@ const WhiteElephantGame = () => {
       id: index + 1,
       isUnwrapped: false,
       name: giftNames[index] || `Gift #${index + 1}`,
-      imageUrl: images[imageFileName].default.src || `/api/placeholder/${120}/${120}`,
+      imageUrl: images[imageFileName] || `/api/placeholder/${120}/${120}`,
       link: giftLinks[index] || "#", // Add the link property
       ownedBy: null,
     };
@@ -143,6 +143,7 @@ const WhiteElephantGame = () => {
       const newUnwrappedGifts = [...unwrappedGifts, updatedGift];
       setUnwrappedGifts(newUnwrappedGifts);
       setSelectedGift(updatedGift);
+      console.log(selectedGift);
   
       if (stolenPlayer) {
         setStolenPlayer(null);
@@ -321,11 +322,11 @@ const WhiteElephantGame = () => {
     return 'bg-gray-200';
   };
 
-  const getPlayersWithGifts = () => {
-    return players
-      .filter(player => getCurrentPlayerGift(player))
-      .sort((a, b) => a.localeCompare(b));
-  };
+  // const getPlayersWithGifts = () => {
+  //   return players
+  //     .filter(player => getCurrentPlayerGift(player))
+  //     .sort((a, b) => a.localeCompare(b));
+  // };
 
   const getPlayersWithoutGifts = () => {
     return players
@@ -414,7 +415,7 @@ const WhiteElephantGame = () => {
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">  {gifts.map((gift) => {
     const unwrappedGift = unwrappedGifts.find((g) => g.id === gift.id);
     const isUnwrapped = !!unwrappedGift;
-    const isLocked = isGiftLocked(gift.id);
+    // const isLocked = isGiftLocked(gift.id);
     const canSteal = isUnwrapped && canStealGift(gift.id, unwrappedGift?.ownedBy);
     const canUnwrap = !isUnwrapped && (currentPlayer === stolenPlayer || !stolenPlayer);
 
