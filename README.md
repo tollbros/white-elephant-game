@@ -87,6 +87,7 @@ Your app is ready to be deployed!
 1. Add players to the `basePlayers` array in `WhiteElephantGame.jsx`.
 2. Customize gift names in the `giftNames` array.
 3. Ensure gift images are added to the `/images` folder with filenames matching the `giftX.jpg` pattern.
+4. After adding gifts to the `giftNames` array, ensure that the `giftLinks` array and the `totalGifts` value are also updated to match the gifts.
 
 ### Game Play
 1. The first player is randomly selected to start.
@@ -106,6 +107,7 @@ Your app is ready to be deployed!
 1. Update the `giftNames` array with the names of gifts.
 2. Add gift images to the `/images` folder, naming them sequentially (e.g., `gift1.jpg`, `gift2.jpg`, etc.).
 3. Update the `giftLinks` array with the links to all of the gifts. 
+4. Update the `totalGifts` array with the total number of gifts. 
 
 ### Tailwind Styling
 All styles are powered by **Tailwind CSS**. Modify styles in `src/styles/` or directly in the JSX.
