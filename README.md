@@ -84,33 +84,71 @@ Your app is ready to be deployed!
 
 ## Usage
 ### Game Setup
-1. Add players to the `basePlayers` array in `WhiteElephantGame.jsx`.
-2. Customize gift names in the `giftNames` array.
-3. Ensure gift images are added to the `/images` folder with filenames matching the `giftX.jpg` pattern.
-4. After adding gifts to the `giftNames` array, ensure that the `giftLinks` array and the `totalGifts` value are also updated to match the gifts.
 
-### Game Play
-1. The first player is randomly selected to start.
-2. Players take turns to either:
-   - Unwrap a new gift.
-   - Steal an unwrapped gift (with a maximum of two steals per gift).
-3. After all players have a gift, the first player has a **final pick** to swap or keep their gift.
-4. The game ends, and a summary of all players and their gifts is displayed.
+All setup is now done from a single config file:
+
+```
+src/config/gameData.js
+```
+
+Inside this file, you’ll find:
+
+- `basePlayers` → list of all players  
+- `giftsData` → gift name, Amazon link, and image filename  
+- `totalGifts` → automatically calculated from the gifts array  
+
+### How to Customize the Game
+
+#### 1. Add or Edit Players
+Open `src/config/gameData.js` and update:
+
+```js
+export const basePlayers = [
+  "Player 1",
+  "Player 2",
+  ...
+];
+```
+
+#### 2. Add or Edit Gifts
+Update the `giftsData` array:
+
+```js
+{ id: 1, name: "Gift Name", link: "AmazonLink", imageFile: "gift1.jpg" }
+```
+
+Each gift needs:
+- a `name`
+- a `link`
+- an `imageFile` that matches the actual file in `src/images/`
+
+#### 3. Add Gift Images
+Place gift images in:
+
+```
+src/images/
+```
+
+Filenames must match the `imageFile` value  
+(e.g., `imageFile: "gift1.jpg"` requires an image named `gift1.jpg`).
+
+#### 4. Total Gifts
+No manual updating needed — `totalGifts` calculates automatically:
+
+```js
+export const totalGifts = giftsData.length;
+```
 
 ---
 
-## Customization
-### Adding Players
-- Update the `basePlayers` array in `WhiteElephantGame.jsx` with player names.
+## Deploying Changes
+After updating players, gifts, or images — and merging your changes into `main` — run:
 
-### Adding Gifts
-1. Update the `giftNames` array with the names of gifts.
-2. Add gift images to the `/images` folder, naming them sequentially (e.g., `gift1.jpg`, `gift2.jpg`, etc.).
-3. Update the `giftLinks` array with the links to all of the gifts. 
-4. Update the `totalGifts` array with the total number of gifts. 
+```bash
+npm run deploy
+```
 
-### Tailwind Styling
-All styles are powered by **Tailwind CSS**. Modify styles in `src/styles/` or directly in the JSX.
+This rebuilds the production app and publishes it to GitHub Pages.
 
 ---
 
