@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap');
+
 /* Add custom global styles below Tailwind imports */
 body {
   margin: 0;
@@ -25,4 +27,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.holiday-title {
+  font-family: 'Baloo 2', 'Trebuchet MS', sans-serif;
+  letter-spacing: 0.01em;
+  font-weight: 800;
 }

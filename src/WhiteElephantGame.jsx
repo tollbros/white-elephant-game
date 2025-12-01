@@ -2,101 +2,10 @@ import React, { useState } from 'react';
 import { Gift, Snowflake, TreePine, Heart, Sparkles, CandyCane, Star, User, Lock } from 'lucide-react';
 import Card from './components/card';
 import { Alert, AlertDescription } from './components/alert';
+import { basePlayers, giftsData, totalGifts } from './config/gameData';
 // import gift1 from './images/gift1.jpg';
 
 const WhiteElephantGame = () => {
-  const basePlayers = [ "Aaron Cocks", "Alexis Dorr", "Alyssa Piselli", "Andy Espinoza", 
-    "Brian Corchiolo", "Carter Knight", "Cheyenne Scott", "Charles Niedringhaus", 
-    "Christopher Munden", "Christine Robinson", "Connor Parahus", "Francesca DiPlacido", 
-    "Gaston Soto", "Holly Milnes", "Jack Amsterdam", "Jen Barthelemy", "Jennifer Reshetar", 
-    "Joe Ogletree", "Justina Akpali", "Kaylee Richard", "Katrina Siske", "Kristen Mang", 
-    "Michael Duarte", "Myles Hohman", "Pam Jackson", "Phillip Ramirez", "Pieter Vandenburg", 
-    "Rachel Colletti", "Reeba Ivan", "Sabrina McGarrity", "Sara Meixner", "Sean Gibbons", 
-    "Shelby Montes de Oca", "Snow Vongsakulvong", "Tara Gartland", "Tammy Hill", "Vince Suriani"
-  ];
-  
-  
-  const giftNames = [
-    "Bluetooth Speaker",       // gift1
-    "Chair Heating Pad",       // gift2
-    "Essential Oil Diffuser",  // gift3
-    "Glass Food Containers",   // gift4
-    "10oz Yeti Tumbler",       // gift5
-    "What Do You Meme?",       // gift6
-    "Fondue Pot",              // gift7
-    "Flower Pot",              // gift8
-    "Door Sign",               // gift9
-    "Balsam & Cedar Candle",   // gift10
-    "Charcuterie Tray",        // gift11
-    "Catch Phrase",            // gift12
-    "Pickleball Set",          // gift13
-    "Cocktail Shaker Set",     // gift14
-    "Coffee Javasok",          // gift15
-    "Mini Crockpot",           // gift16
-    "Stanley Wine Tumbler",    // gift17
-    "3-in-1 Insulated Can Koozie", // gift18
-    "Massage Gun",             // gift19
-    "Smores Maker",            // gift20
-    "Electric Candle Lighters",// gift21
-    "Popcorn Maker",           // gift22
-    "Luggage Scales",          // gift23
-    "Lego Car",                // gift24
-    "Tile Tracker",            // gift25
-    "Carhartt Hat",            // gift26
-    "Blanket",                 // gift27
-    "Eagles Desk Pad",         // gift28
-    "Rechargable Hand Warmers",// gift29
-    "Himalayan Salt Lamp",     // gift30
-    "Holiday Waffle Maker",    // gift31
-    "Snoop Dogg Cookbook",     // gift32
-    "Mug Warmer",              // gift33
-    "Veggie Chopper & Slicer", // gift34
-    "Mini Space Heater",       // gift35
-    "40oz Water Bottle",       // gift36
-    "Packing Cubes"            // gift37
-  ];
-  
-  
-  const giftLinks = [
-    "https://a.co/d/iANm6vx", // Bluetooth Speaker - gift1
-    "https://a.co/d/5ZEWLrB", // Chair Heating Pad - gift2
-    "https://a.co/d/1AcVGT4", // Essential Oil Diffuser - gift3
-    "https://a.co/d/aIlPHu9", // Glass Food Containers - gift4
-    "https://a.co/d/1BNWH5e", // 10oz Yeti Tumbler - gift5
-    "https://a.co/d/4gb0ptw", // What Do You Meme? - gift6
-    "https://a.co/d/hN0MCnV", // Fondue Pot - gift7
-    "https://a.co/d/e6z78ib", // Flower Pot - gift8
-    "https://a.co/d/g4AyxDK", // Door Sign - gift9
-    "https://a.co/d/4WzGaxD", // Balsam & Cedar Candle - gift10
-    "https://a.co/d/0NnLiq3", // Charcuterie Tray - gift11
-    "https://a.co/d/3DazynN", // Catch Phrase - gift12
-    "https://a.co/d/goKmJHb", // Pickleball Set - gift13
-    "https://a.co/d/9aEy4ui", // Cocktail Shaker Set - gift14
-    "https://a.co/d/7lI6JDf", // Coffee Javasok - gift15
-    "https://a.co/d/9rWBwJN", // Mini Crockpot - gift16
-    "https://a.co/d/hD17Tis", // Stanley Wine Tumbler - gift17
-    "https://a.co/d/a41SHmt", // 3-in-1 Insulated Can Koozie - gift18
-    "https://a.co/d/9XAfHhO", // Massage Gun - gift19
-    "https://a.co/d/1EQmPRj", // Smores Maker - gift20
-    "https://a.co/d/c2eoRrW", // Electric Candle Lighters - gift21
-    "https://a.co/d/bwiwd4Z", // Popcorn Maker - gift22
-    "https://a.co/d/0Brj9p7", // Luggage Scales - gift23
-    "https://a.co/d/8g8lF69", // Lego Car - gift24
-    "https://a.co/d/6Zh6zQc", // Tile Tracker - gift25
-    "https://a.co/d/9fDMaAt", // Carhartt Hat - gift26
-    "https://a.co/d/e6uYV0Y", // Blanket - gift27
-    "https://a.co/d/6jI9AZP", // Eagles Desk Pad - gift28
-    "https://a.co/d/cfOVzli", // Rechargable Hand Warmers - gift29
-    "https://a.co/d/3pXu3BN", // Himalayan Salt Lamp - gift30
-    "https://a.co/d/2tw9nKI", // Holiday Waffle Maker - gift31
-    "https://a.co/d/bhznkh1", // Snoop Dogg Cookbook - gift32
-    "https://a.co/d/62gbzlk", // Mug Warmer - gift33
-    "https://a.co/d/h0hbfOp", // Veggie Chopper & Slicer - gift34
-    "https://a.co/d/09FHrDm", // Mini Space Heater - gift35
-    "https://a.co/d/9Q4m4rF", // 40oz Water Bottle - gift36
-    "https://a.co/d/ejXOndu"  // Packing Cubes - gift37
-  ];
-    
   // Randomize player order on initial load
   const [players] = useState(() => {
     return [...basePlayers].sort(() => Math.random() - 0.5);
@@ -113,8 +22,6 @@ const WhiteElephantGame = () => {
   const [finalPick, setFinalPick] = useState(false); // Tracks if it's the final pick phase
   const firstPlayer = players[0]; // Save the first player before shuffling
   
-  const totalGifts = 37; // Declare totalGifts before using it in the gifts array
-
  // Function to dynamically import all images from the `/images` folder
   const importAllImages = (requireContext) => {
   const images = {};
@@ -129,14 +36,14 @@ const WhiteElephantGame = () => {
   const images = importAllImages(require.context('./images', false, /\.(png|jpe?g|svg)$/));
 
   // Dynamically create the gifts array
-  const gifts = Array.from({ length: totalGifts }, (_, index) => {
-    const imageFileName = `gift${index + 1}.jpg`;
+  const gifts = giftsData.slice(0, totalGifts).map((gift) => {
+    const imageFileName = gift.imageFile || `gift${gift.id}.jpg`;
     return {
-      id: index + 1,
+      id: gift.id,
       isUnwrapped: false,
-      name: giftNames[index] || `Gift #${index + 1}`,
+      name: gift.name || `Gift #${gift.id}`,
       imageUrl: images[imageFileName] || `/api/placeholder/${120}/${120}`,
-      link: giftLinks[index] || "#", // Add the link property
+      link: gift.link || "#",
       ownedBy: null,
     };
   });
@@ -392,12 +299,24 @@ const WhiteElephantGame = () => {
       return "Game Over! Everyone has a gift!";
     }
     if (finalPick) {
-      return `${firstPlayer}, it's your final turn! Steal a gift (you'll swap gifts with its owner) or keep yours!`;
+      return (
+        <>
+          <span className="font-semibold text-teal-900">{firstPlayer}</span>, it's your final turn! Steal a gift (you'll swap gifts with its owner) or keep yours!
+        </>
+      );
     }
     if (stolenPlayer) {
-      return `${stolenPlayer}'s gift was stolen! ${stolenPlayer}, you can steal another gift or unwrap a new one!`;
+      return (
+        <>
+          <span className="font-semibold text-rose-700">{stolenPlayer}</span>'s gift was stolen! {stolenPlayer}, you can steal another gift or unwrap a new one!
+        </>
+      );
     }
-    return `${currentPlayer}, you can steal an unwrapped gift or unwrap a new one!`;
+    return (
+      <>
+        <span className="font-semibold text-teal-900">{currentPlayer}</span>, you can steal an unwrapped gift or unwrap a new one!
+      </>
+    );
   };
 
   const getPlayerStatus = (player) => {
@@ -421,37 +340,66 @@ const WhiteElephantGame = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="min-h-screen bg-[#f8f1f5] p-4">
       <div className="mb-6">
-      <div className="flex flex-col items-center mb-6">
-  <h2 className="text-3xl font-bold text-center">MOPs White Elephant Gift Exchange</h2>
-  {gameEnded && (
-    <button 
-      onClick={() => setShowSummary(true)}
-      className="mt-2 px-4 py-2 bg-indigo-900 text-white rounded hover:bg-indigo-500"
-    >
-      View Summary
-    </button>
-  )}
-</div>
+        <div className="relative flex flex-col items-center text-center gap-3 mb-6 overflow-hidden rounded-3xl border border-rose-200 bg-gradient-to-br from-rose-50 via-white to-sky-50 px-5 py-6 shadow-lg">
+          <div className="pointer-events-none absolute -top-2 left-4 text-rose-200/90">
+            <Snowflake
+              size={72}
+              className="drop-shadow animate-[spin_12s_linear_infinite]"
+            />
+          </div>
+          <div className="pointer-events-none absolute -bottom-2 right-4 text-teal-200/80">
+            <TreePine
+              size={92}
+              className="drop-shadow animate-[pulse_6s_ease-in-out_infinite]"
+            />
+          </div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-rose-600 shadow-sm ring-1 ring-rose-100">
+            <Sparkles size={16} /> Holiday Cheer Mode
+          </span>
+          <h2 className="holiday-title text-4xl font-black text-teal-900 sm:text-5xl">MOPs White Elephant Gift Exchange</h2>
+          <p className="max-w-2xl text-xs text-slate-600 sm:text-sm">
+            Unwrap. Steal. Repeat. Because holiday chaos is the gift that keeps on giving.
+          </p>
+          <div className="flex items-center justify-center gap-3 text-rose-500">
+            <CandyCane size={24} className="drop-shadow-sm" />
+            <Gift size={24} className="drop-shadow-sm text-amber-500" />
+            <Heart size={22} className="drop-shadow-sm text-teal-500" />
+            <Star size={22} className="drop-shadow-sm text-rose-400" />
+          </div>
+          {gameEnded && (
+            <button
+              onClick={() => setShowSummary(true)}
+              className="mt-2 inline-flex items-center gap-2 rounded-full bg-indigo-900 px-5 py-2 text-white shadow hover:bg-indigo-700"
+            >
+              <Gift size={18} /> View Summary
+            </button>
+          )}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-transparent via-rose-200/60 to-transparent" />
+        </div>
         
-        <Alert className={`mb-4 ${gameEnded ? 'bg-blue-100' : ''}`}>
-          <User className="h-4 w-4" />
-          <AlertDescription>
-  {getStatus()}
+        <Alert className={`mb-4 rounded-2xl border border-rose-100 bg-gradient-to-r from-white via-rose-50/50 to-white shadow ${gameEnded ? 'ring-1 ring-indigo-200' : ''}`}>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600/20 text-emerald-700 shadow-inner ring-1 ring-emerald-500/50">
+              <User className="h-5 w-5" />
+            </span>
+            <AlertDescription>
+              <p className="text-base text-slate-700">{getStatus()}</p>
 
-  {/* Add "Keep My Gift" button during the final pick phase */}
-  {finalPick && currentPlayer === firstPlayer && (
-    <div className="mt-4 text-center">
-      <button
-        onClick={() => handleSteal(null)} // Trigger "keep gift" logic
-        className="px-4 py-2 bg-teal-900 text-white rounded hover:bg-green-600"
-      >
-        Keep My Gift
-      </button>
-    </div>
-  )}
-</AlertDescription>
+              {/* Add "Keep My Gift" button during the final pick phase */}
+              {finalPick && currentPlayer === firstPlayer && (
+                <div className="mt-4 text-center">
+                  <button
+                    onClick={() => handleSteal(null)} // Trigger "keep gift" logic
+                    className="px-4 py-2 rounded-full bg-teal-900 text-white shadow hover:bg-teal-700"
+                  >
+                    Keep My Gift
+                  </button>
+                </div>
+              )}
+            </AlertDescription>
+          </div>
         </Alert>
 
         <div className="mb-4">
@@ -464,27 +412,27 @@ const WhiteElephantGame = () => {
         </div>
 
         <div className="mb-4">
-  <h3 className="text-lg font-semibold mb-2">Players with Gifts</h3>
-  <div className="flex gap-2 flex-wrap">
-    {players
-      .filter((player) => unwrappedGifts.some((g) => g.ownedBy === player))
-      .map((player) => {
-        const gift = unwrappedGifts.find((g) => g.ownedBy === player); // Get the player's gift
-        return (
-          <div key={player} className="flex flex-col items-center">
-            {/* Player Bubble */}
-            <span className="px-3 py-1 rounded-full text-sm bg-rose-800 text-white">
-              {player}
-            </span>
-            {/* Gift Name Below */}
-            <p className="text-sm text-black-800 mt-1">
-              {gift ? gift.name : 'No Gift'}
-            </p>
+          <h3 className="text-lg font-semibold mb-2">Players with Gifts</h3>
+          <div className="flex gap-2 flex-wrap">
+            {players
+              .filter((player) => unwrappedGifts.some((g) => g.ownedBy === player))
+              .map((player) => {
+                const gift = unwrappedGifts.find((g) => g.ownedBy === player); // Get the player's gift
+                return (
+                  <div key={player} className="flex flex-col items-center">
+                    {/* Player Bubble */}
+                    <span className="px-3 py-1 rounded-full text-sm bg-rose-800 text-white">
+                      {player}
+                    </span>
+                    {/* Gift Name Below */}
+                    <p className="text-sm text-black-800 mt-1">
+                      {gift ? gift.name : 'No Gift'}
+                    </p>
+                  </div>
+                );
+              })}
           </div>
-        );
-      })}
-  </div>
-</div>
+        </div>
 
         <div className="mb-4">
           <h3 className="text-lg font-semibold mb-2">Players Waiting for Gifts</h3>
@@ -498,7 +446,8 @@ const WhiteElephantGame = () => {
         </div>
       </div>
       
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">  {gifts.map((gift) => {
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+        {gifts.map((gift) => {
     const unwrappedGift = unwrappedGifts.find((g) => g.id === gift.id);
     const isUnwrapped = !!unwrappedGift;
     // const isLocked = isGiftLocked(gift.id);
@@ -506,8 +455,14 @@ const WhiteElephantGame = () => {
     const canUnwrap = !isUnwrapped && (currentPlayer === stolenPlayer || !stolenPlayer);
 
    // Randomized colors, sizes, and icons
-   const colors = ["bg-rose-800", "bg-indigo-900", "bg-pink-300", "bg-teal-900", "bg-blue-300" ];
-   const textColors = ["text-amber-400", "text-slate-400", "text-red-600", "text-blue-300", "text-pink-600"];
+   const colors = [
+    "bg-gradient-to-br from-rose-800 via-rose-700 to-rose-500",
+    "bg-gradient-to-br from-indigo-700 via-purple-500 to-indigo-400",
+    "bg-gradient-to-br from-pink-500 via-rose-300 to-rose-100",
+    "bg-gradient-to-br from-emerald-900 via-emerald-700 to-teal-600",
+    "bg-gradient-to-br from-sky-500 via-blue-400 to-indigo-300"
+   ];
+   const textColors = ["text-rose-50", "text-indigo-50", "text-rose-900", "text-emerald-50", "text-sky-50"];
    const iconSizes = [48, 98, 38, 76, 52, 64];
    const icons = [Gift, Snowflake, TreePine, Sparkles, CandyCane, Heart, Star];
       
@@ -520,8 +475,8 @@ const WhiteElephantGame = () => {
     return (
 <Card
   key={gift.id}
-  className={`relative cursor-pointer transition-transform duration-500 ${
-    zoomedGiftId === gift.id ? 'transform scale-150 z-10' : ''
+  className={`relative cursor-pointer rounded-3xl border border-slate-200 bg-slate-50/90 p-2 transition-transform duration-300 ${
+    zoomedGiftId === gift.id ? 'transform scale-150 z-10' : 'hover:-translate-y-1 hover:shadow-lg'
   } ${
     (!canSteal && !canUnwrap) || gameEnded ? 'opacity-50 cursor-not-allowed' : ''
   }`}
@@ -543,8 +498,8 @@ const WhiteElephantGame = () => {
   }}
 >
   <div
-    className={`h-[350px] w-full flex flex-col justify-between ${
-      isUnwrapped ? 'bg-white' : colorClass
+    className={`h-[350px] w-full flex flex-col justify-between overflow-hidden rounded-2xl border ${
+      isUnwrapped ? 'bg-white border-slate-200 shadow-md' : `${colorClass} border-white/70 shadow`
     }`}
   >
     {/* Icon or Image */}
@@ -581,13 +536,13 @@ const WhiteElephantGame = () => {
       </span>
     )}
   </p>
-      )}
+    )}
     </div>
   </div>
 </Card>
     );
   })}
-</div>
+      </div>
     </div>
   );
 };
