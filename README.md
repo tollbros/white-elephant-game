@@ -1,5 +1,5 @@
 
-# White Elephant Gift Exchange App
+# White Elephant Gift Exchange App - MOPs version
 
 ## Live Site
 [Link to Live App](https://tollbros.github.io/white-elephant-game/)
